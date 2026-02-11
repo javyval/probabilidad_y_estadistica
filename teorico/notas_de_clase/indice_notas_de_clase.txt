@@ -1,0 +1,109 @@
+01_12_08
+Clase 12 de Agosto
+
+	Presentacion de la Materia
+	Poblacion y Muestra
+	Seleccion de Datos
+	Muestreo
+	Experimentos 
+		Espacio Muestrual
+		Suceso
+	Probabilidad
+		Funcion Probabilidad
+		Espacio Equiprobable "Regla de Laplace"
+	
+02_14_08
+Clase 14 de Agosto
+	Ejemplos de Probabilidad Equiprobable
+	Probabilidad Condicional
+	Ejemplos Probabilidad Condicional
+
+03_19_08
+Clase 19 de Agosto
+	Experimentos Aleatorio
+	Variable Aleatoria
+	Funcion de Masa (v.a.discreta)
+		Propiedades
+	Funcion de Distribucion 
+		Propiedades
+	Ejemplos 
+	Transformacion de una v.a.discreta
+
+04_21_08
+Clase 21 de Agosto
+	Expectativa o Valor Esperado
+	Medidas caracteristicas de una v.a.
+		Tendencia central
+			Moda
+			Mediana
+			Media
+		Dispercion
+	Esperanza
+	Esperanza de una v.a.discreta
+		Propiedades 
+	Varianza
+	Varianza de una v.a.discreta
+		Momentos 
+		Propiedades
+	Mediana
+	Coeficiente de Variacion
+	
+05_26_08
+Clase 26 de Agosto
+	Distribuciones conocidas
+	Distribucion Degenerada
+	Distribucion uniforme Discreta
+	Distribucion Bernoulli
+	Distribucion Binomial
+	Distribucion Poisson
+
+06_28_08
+Clase 28 de Agosto
+	Experimentos Geometricos
+	Distribucion Geometrica
+	Binomial Negativa
+	Distribucion Binomial Negativa
+
+07_02_09
+Clase 2 de Septiembre
+	Variable Aleatoria Continua
+	Densidad de Probabilidad
+		Funcion de Distribucion
+	Distribucion Condicional
+	Esperanza y Varianza
+
+08_04_09
+Clase 4 de Septiembre
+	Cuantiles 
+	Distribucion Uniforme
+	Distribucion Exponencial
+
+09_09_09
+Clase 9 de Septiembre
+	Distribucion Normal
+
+10_11_09
+Clase 11 de Septiembre
+	Distribucion Gamma
+		Funcion Gamma de Euler Γ
+		Caracterizacion usando forma α y tasa λ
+		Caracterizacion usando Forma α y escala β
+		Esperanza y Varianza de una distribucion Gamma
+		Distribucion chi cuadrado
+		Distribucion Chi cuadrado con k grados de libertad
+		Distribucion Exponencial
+			Distribucion Weibull
+			Distribucion Log-Normal
+
+11_16_09
+Clase 16 de Septiembre
+	Distribucion Conjunta
+	Distribucion Marginal
+	Variables independientes
+	Covarianza
+	Correlacion
+	
+		
+	 
+		
+	
