@@ -1,0 +1,25 @@
+INDICE
+
+Practico 1
+	Probabilidad
+	Probabilidad Condicional
+	Independecia
+
+Practico 2
+	Variable Aleatoria
+	Funciones de Probabilidad de Masa y Funcion de Distribucion
+	Medidas Caracteristicas de una V.A.
+	Distribuciones de una Variable Aleatoria Discreta		
+
+Practico 3
+	Funcion de Densidad u Distrubucion Acumulada
+	Distribucion Uniforme
+	Distrucion Normal
+	Distribucion Exponencial
+	Otras Distribuciones
+
+Practico 4
+	Ejercicios Conceptuales de Probabilidad Conjunta
+	Aplicaciones de Probabilidad Conjunta
+	Ejercicios MathLovers
+	Importancia de la Normal Estandar
