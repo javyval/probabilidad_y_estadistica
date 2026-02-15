@@ -231,10 +231,114 @@ Calcular:
 * **a -** $P(X\leq 100)$
 $$
 \begin{array}{l}
-P(X\leq 100)=P\left( Z\leq \dfrac{100-80}{20} \right)=P(Z\leq 1)=
+P(X\leq 100)=P\left( Z\leq \dfrac{100-80}{10} \right)=P(Z\leq 2) \\
+P(X\leq 100)=0.9772
 \end{array}
 $$
-* **b -** $P(65\leq 100)$
+* **b -** $P(65\leq X\leq 100)$
+$$
+\begin{array}{l}
+P(65\leq X\leq 100)=P\left( \dfrac{65-80}{10}\leq Z\leq\dfrac{100-80}{10} \right)=P(-1,5\leq Z\leq 2) \\
+P(-1,5\leq Z\leq 2)=\Phi(2)-\Phi(-1,5)=\Phi(2)+\Phi(1,5)-1=0.9772+0.9332-1 \\
+P(65\leq X\leq 100)=0,9104
+\end{array}
+$$
 * **c -** $P(70\leq X)$
+$$
+\begin{array}{l}
+P(70\leq X)=P\left( \frac{70-80}{10}\leq Z\right)=P(-1\leq Z)=P(Z\leq 1) \\
+P(70\leq X)=0.8413
+\end{array}
+$$
 * **d -** $P(85\leq X\leq 95)$
-* **e -** $P(|X-80|\leq 10)$
+$$
+\begin{array}{l}
+P(85\leq X\leq 95)=P\left( \dfrac{85-80}{10}\leq Z\leq \dfrac{95-80}{10}\right)=P( 0,5\leq Z\leq 1,5) \\
+P( 0,5\leq Z\leq 1,5)=\Phi(1,5)-\Phi(0,5)=0.9332-0.6915 \\
+P(85\leq X\leq 95)=0,2417
+\end{array}
+$$
+* **e -** $P(|X-80|\leq 10)=P(-10\leq X-80\leq 10)=P(70\leq X\leq 90)$
+$$
+\begin{array}{l}
+P(70\leq X\leq 90)=P\left(\dfrac{70-80}{10}\leq Z\leq\dfrac{90-80}{10}\right)=P(-1\leq Z\leq 1)=2\Phi(1)-1 \\
+P(70\leq X\leq 90)=0,6826
+\end{array}
+$$
+### Ejercicio 6
+El diámetro de los árboles de determinado tipo, a cierta altura, se distribuye normalmente con $\mu=8,8$" y $\sigma=2,8$" Según sugiere el articulo "Simulating a Harvester-Forwarder Softwood Thinning".
+* **a -** ¿Cuál es la probabilidad de que el diámetro de un árbol, seleccionado al azar, sea de a lo sumo 10"? ¿Y que sea mayor a 10"?
+$$
+\begin{array}{l}
+P(X\leq 10)=P\left( Z\leq \dfrac{10-8,8}{2,8} \right)=P\left( Z\leq \dfrac{3}{7} \right)\thickapprox P(Z\leq 0,43) \\
+P(X\leq 10)\thickapprox 0,6664 \\
+P(X\geq 10)\thickapprox P(Z\geq 0,43)=1-P(Z\leq 0,43)=1-0,6664 \\
+P(X\geq 10)\thickapprox 0,3336
+\end{array}
+$$
+* **b -** ¿Cuál es la probabilidad de que el diámetro del un árbol, seleccionado al azar, esté entre 5" y 10"? 
+$$
+\begin{array}{l}
+P(5\leq X\leq 10)=P\left( \dfrac{5-8,8}{2,8}\leq Z\leq \dfrac{10-8,8}{2,8} \right)=P\left(- \dfrac{19}{14}\leq Z\leq \dfrac{3}{7} \right)\thickapprox P(-1,36\leq Z\leq 0,43) \\
+P(-1,36\leq Z\leq 0,43)=\Phi(0,43)+\Phi(1,36)-1=0,6664+0,9131-1 \\
+P(5\leq X\leq 10)=0,5795
+\end{array}
+$$
+* **c -** ¿Qué valor de $c$ es tal que el intervalo $(8,8-c;8,8+c)$ incluye el $98\%$ de todos los valores de diámetro?
+$$
+\begin{array}{l}
+P(8,8-c\leq X\leq 8,8+c)=P(\mu-c\leq X\leq \mu+c)=0,98 \\
+P(\mu-c\leq X\leq \mu+c)=P(X\leq|c|+\mu)=P\left( Z\leq \dfrac{|c|+\mu-\mu}{\sigma} \right)=P\left( Z\leq \dfrac{|c|}{\sigma} \right)=2\Phi\left( \dfrac{c}{\sigma} \right)-1\\
+\Phi \left( \dfrac{c}{\sigma} \right)=\dfrac{1+0,98}{2}=0,99 \\
+z_{0,99}\thickapprox 2,33\Longrightarrow \dfrac{c}{2,8}=2,33\iff c=2,33\cdot 2,8 \\
+c=6,524
+\end{array}
+$$
+* **d -** ¿Cuál es la probabilidad de que al menos 1 de 5 árboles elegidos al azar tenga diámetro entre 5" y 10"?.
+$$
+\begin{array}{l}
+Y=\text{cantidad de arboles cuyo diametro esta entre 5" y 10"  de un total de 5} \\
+\mathcal B(5;0,5795) \\
+P(1\leq Y)=1-P(X\leq 0)=1-P(X=0)=1-(1-0,5795)^{5} \\
+P(1\leq Y)=0,9869
+\end{array}
+$$
+### Ejercicio 7
+La distribución de resistencia para resistores de cierto tipo es normal, el $10\%$ de todos los resistores tienen una resistencia que excede los 10,256 ohm y el $5\%$ una resistencia menor que 9,671 ohm ¿Cuáles son los valores de la media y la desviación estándar de la distribución de la resistencia?
+$$
+\begin{array}{l}
+P(X> 10,256)=0,10\iff P(X \leq 10,256)=0,90 \Longrightarrow z_{1}=1,28 \\
+P(X\leq 9,671)=0,05\Longrightarrow z_{2}=-1,64 \\
+z=\dfrac{x-\mu}{\sigma}\Longrightarrow x=\mu+z\sigma \\
+\begin{array}{l}
+\begin{cases}
+10,256=\mu+1,28\sigma \\
+9,671=\mu-1,64\sigma
+\end{cases}\iff &
+\left[\begin{array}{cc|c}
+1 & 1,28 & 10,256 \\
+1 & -1,64 & 9,671
+\end{array}\right]\iff &
+\left[\begin{array}{cc|c}
+1 & 1,28 & 10,256 \\
+0 & -2,92 & −0,585
+\end{array}\right]\iff \\[2ex]
+\left[\begin{array}{cc|c}
+1 & 1,28 & 10,256 \\
+0 & 1 & 0,2003
+\end{array}\right]\iff &
+\left[\begin{array}{cc|c}
+1 & 0 & 9,9996 \\
+0 & 1 & 0,2003
+\end{array}\right]\iff &
+\begin{cases}
+\mu=9,9996 \\
+\sigma=0,2003
+\end{cases}
+\end{array}
+\end{array}
+$$
+
+### Ejercicio 8
+* **a -** Demuestre que si $X$ tiene una distribución normal con parámetros $\mu$ y $\sigma$, entonces $Y=aX+b$ con $a\neq 0$, también tiene una distribución normal. ¿Cuáles con los parámetros de la distribución $Y$ (Es decir $E(Y)$ y $V(Y)$)?
+* **b -** Si la temperatura medida en $°C$ está normalmente distribuida con media 115 y desviación estándar 2, ¿qué se puede decir acerca de la distribución de la temperatura medida en $°F$?.
