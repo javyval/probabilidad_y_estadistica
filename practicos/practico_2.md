@@ -2,7 +2,7 @@
 ### Ejercicio 0
 Imagine que desea generar listas de longitud 5, donde cada elementos es un numero entero entre 1 y 100. un ejemplo de una lista puede ser $(87, 1, 39, 100, 56)$ 
 El espacio muestral $\Omega$ está compuesto por todas las posibles listas de 5 elementos que se pueden formar con números enteros en el rango de 1 a 100. Es decir $$\Omega=\{(a_{1},a_{2},a_{3},a_{4},a_{5}): 1\leq a_{i}\leq 100,i=1,2,3,4,5\}$$
-* **a -** Supongamos que cada elementos de la lista tiene la misma probabilidad de ser seleccionado. Escriba la función de probabilidad de P asociada a este experimento. Es decir determine la probabilidad de generar una lista especifica en $\Omega$.$$P(a)=\dfrac{1}{100^{5}}$$
+* **a -** Supongamos que cada elementos de la lista tiene la misma probabilidad de ser seleccionado. Escriba la función de probabilidad de $P$ asociada a este experimento. Es decir determine la probabilidad de generar una lista especifica en $\Omega$.$$P(a)=\dfrac{1}{100^{5}}$$
 * **b -** Defina una variable aleatoria $X$ cualquiera relacionada con este experimento.$$\begin{array}{l}
 X=\text{Cantidad de veces que aparece el numero 7} \\
 Y=\text{Suma de los elementos} \\
@@ -373,6 +373,112 @@ $$
 ### Ejercicio 13
 Boca y River hacen una serie de partidos en los que si hay empate se define por penales. Suponga que $p=P(\text{gana Boca})=0,5$. Jugaran hasta que Boca gane dos partidos.
 * **a -** ¿Cuál es la probabilidad de que River gane $x$ partidos?.
-* **b -** ¿Cuál es la probabilidad de que se ganen 4 partidos?.
+$$
+\begin{array}{l}
+P(K=k)=\dbinom{k-1}{r-1}\cdot q^{k-r}\cdot p^{r}\quad k=r,r+1,r+2,\dots\\
+k=x+r \quad x:\text{cantidad de partidos ganados por river}\\
+r=2 \\
+p=0,5 \\
+q=0,5 \\
+P(X=x)=\dbinom{x+1}{1}\cdot 0,5^{x}\cdot 0,5^{2}\quad x=0,1,2,3,\dots
+\end{array}
+$$
+* **b -** ¿Cuál es la probabilidad de que se jueguen 4 partidos?.
+$$
+\begin{array}{l}
+P(K=k)=\dbinom{k-1}{1}\cdot0,5^{k-2}\cdot0,5^{2}\quad k=2,3,4,\dots\\
+P(K=k)=(k-1)\cdot0,5^{k}\quad k=2,3,4,\dots \\
+P(K=4)=(4-1)\cdot 0,5^{4}\\
+P(K=4)=0,1875
+\end{array}
+$$
 * **c -** ¿Cuál es la probabilidad de que de jueguen a lo sumo 4 partidos?.
+$$
+\begin{array}{l}
+\displaystyle P(K\leq 4)=\sum_{k=2}^{4}(k-1)\cdot0,5^{k-2}\cdot0,5^{2}\\
+P(K\leq 4)=\dfrac{11}{16}=0,6875 
+\end{array}
+$$
 * **d -** ¿Cuántos partidos se esperaría que gane River?. ¿Cuántos partidos se esperaría que se jueguen? .
+$$
+\begin{array}{l}
+E(K)=\dfrac{r}{p}=\dfrac{2}{0,5}=4 \\
+K=X+r\iff X=K-r \\
+E(X)=E(K-r)=E(K)-r=4-2 \\
+E(X)=2
+\end{array}
+$$
+### Ejercicio 14
+Suponga que $X=$ números de tornados observados, en una región particular, durante un periodo de un año tiene una distribución Poisson con $\lambda=8$.
+* **a -** Calcule: 
+	* **$i$ -** $P(X\leq5)$
+$$
+\begin{array}{l}
+\displaystyle P(X\leq5)=\sum_{k=0}^{5}\frac{e^{-\lambda}\cdot \lambda^{k}}{k!} \\
+P(X\leq5)=0.1912
+\end{array}
+$$
+	* $ii$ - $P(6\leq X\leq 9)$
+$$
+\begin{array}{l}
+\displaystyle P(6\leq X\leq 9)=\sum_{k=6}^{9}\frac{e^{-\lambda}\cdot \lambda^{k}}{k!} \\
+P(6\leq X\leq 9)=0.52539
+\end{array}
+$$
+	* $iii$ - $P(10\leq X)$
+$$
+\begin{array}{l}
+\displaystyle P(10\leq X)=1-P(X\leq 9)=1-\sum_{k=0}^{9}\frac{e^{-\lambda}\cdot \lambda^{k}}{k!}  \\
+P(10\leq X)=0.28337
+\end{array}
+$$
+	* $iv$ - $P(X\geq 1)$
+$$
+\begin{array}{l}
+\displaystyle P(X\geq 1)=1-P(X=0)=1-\frac{e^{-8}\cdot \lambda^{0}}{0!}=1-\frac{1}{e^{8}} \\
+P(X\geq 1)\thickapprox0,9997
+\end{array}
+$$
+
+* **b -** ¿Cuántos tornados se puede esperar que se observen durante un periodo de un año? ¿Cuál es la desviación estándar de $X$?
+$$
+\begin{array}{l}
+E(X)=\lambda=8 \\
+\sigma^{2}=V(x)=\lambda \\
+\sigma=\sqrt{\lambda}=\sqrt{ 8 }=2\cdot \sqrt{2} \\
+\sigma \thickapprox2,8284
+\end{array}
+$$
+### Ejercicio 15
+Un establecimiento tiene dos entradas. Los coches llegan por hora a la entrada $I$ de acuerdo con una distribución Poisson de parámetro $\lambda=3$ y a la entrada $II$ de acuerdo con una distribución Poisson con parámetro $\lambda=4$. ¿Cuál es la probabilidad de que 3 coches lleguen al estacionamiento durante una hora dada? (Se supone que los números de coches que llegan a las dos entradas son independientes).
+$$
+\begin{array}{l}
+X=X_{I}+X_{II} \\
+\lambda=\lambda_{I}+\lambda_{II} \\
+\lambda=7 \\
+P(X=x)=\dfrac{e^{-\lambda}\cdot\lambda^{x}}{x!} \\
+P(X=3)=\dfrac{e^{-7}\cdot7^{3}}{3!} \\
+P(X=3)=0,052129252
+\end{array}
+$$
+### Ejercicio 16
+Se supone que el número de defectos Y (por cm) de la producción diaria de cierto tipo de soga tiene una distribución de Poisson con una media de 2. Cuando se vende la soga, la ganancia por cm está dada por $X=50-2Y-2Y^{2}$. Dé la ganancia esperada por cm.
+$$
+\begin{array}{l}
+E(Y)=2:\quad V(Y)=2 \\
+V(Y)=E(Y^{2})-E(Y)^{2}\iff \\
+E(Y)^{2}=V(Y)+E(Y)^{2} \\
+E(Y)^{2}=2+2^{2} \\
+E(Y)^{2}=6 \\
+E(X)=E(50-2Y-2Y^{2})=50-2E(Y)-2E(Y^{2})=50-2\cdot 2-2\cdot 6 \\
+E(X)=34
+\end{array}
+$$
+### Ejercicio 17
+* **a -** Halle la esperanza y varianza para una variable aleatoria con distribución Hipergeométrica.
+$$
+\begin{array}{l}
+\displaystyle E(X)=\sum_{i=1}^{n}x\cdot p(x)=\sum_{i=1}^{n}x\cdot\frac{\dbinom{r_{1}}{x}\cdot\dbinom{r-r_{1}}{n-x}}{\dbinom{r}{n}}=\sum_{i=1}^{n}x\dfrac{\dfrac{r_{1}!}{x!(r_{1}-x)}\cdot\dfrac{(r-r_{1})!}{(n-x)!\cdot((r-r_{1})-(n-x))}}{\dfrac{r!}{n!\cdot(r-n)!}} \\
+\end{array}
+$$
+* **b -** Halle la esperanza y varianza para una variable aleatoria con distribución Binomial Negativa.
