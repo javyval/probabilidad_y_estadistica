@@ -341,4 +341,50 @@ $$
 
 ### Ejercicio 8
 * **a -** Demuestre que si $X$ tiene una distribución normal con parámetros $\mu$ y $\sigma$, entonces $Y=aX+b$ con $a\neq 0$, también tiene una distribución normal. ¿Cuáles con los parámetros de la distribución $Y$ (Es decir $E(Y)$ y $V(Y)$)?
+$$
+\begin{array}{l} 
+Y \sim N(\mu,\sigma^{2}) \\
+Y=aX+b \iff X=\dfrac{Y-b}{a}\Longrightarrow \dfrac{dx}{dy}=\dfrac{1}{a}\\
+f_{x}(x)=\dfrac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)/2\sigma^{2}}=\dfrac{1}{\sigma}\varphi\left(\dfrac{x-\mu}{\sigma}\right) \\
+f_{y}(y)=f_{x}\left(\dfrac{y-b}{a}\right)\dfrac{dx}{dy} \\
+f_{y}(y)=\dfrac{1}{|a|\sigma}\varphi\left(\dfrac{y-(\mu a+b)}{\sigma |a|}\right) \\
+Y \sim N(\mu a+b,(\sigma|a|)^{2})
+\end{array}
+$$
 * **b -** Si la temperatura medida en $°C$ está normalmente distribuida con media 115 y desviación estándar 2, ¿qué se puede decir acerca de la distribución de la temperatura medida en $°F$?.
+$$
+\begin{array}{l}
+C\sim N(\mu_{C},\sigma_{C}^{2}) \\
+\mu_{C}=115 \\
+\sigma_{C}=2 \\
+F=C\dfrac{9}{5}+32 \\
+F\sim N\left(115\cdot\dfrac{9}{5},\left( 2\cdot\dfrac{9}{5}\right)^{2}\right) \\
+F\sim N(207,12.96) \\
+\sigma=3,6
+\end{array}
+$$
+### Ejercicio 9
+
+En una fábrica se fabrican tornillos cuyo diámetro es una variable aleatoria normal. Se pueden usar dos máquinas de distintas marcas para cortarlos. Si se cortan con la maquina $A$, el diámetro del tornillo (medido en cm) es una variable con distribución $N(1,0.4)$. Si se cortan con la máquina $B$ (cuyo costo de mantenimiento es mucho menor) el diámetro (también medido en cm) resulta una variable con distribución $N(1.1,0.4)$. la maquina $A$ se usa el $40\%$ de las veces y la $B$ el $60\%$ de las veces. Para que un tornillo de considere aceptable, su diámetro debe de estar entre 0,9 y 1,1 cm.
+* **a -** ¿Cuál es la probabilidad de que un tornillo elegido al azar cumpla el requerimiento deseado?
+$$
+\begin{array}{l}
+\mu_{A}=1 \\
+\sigma_{A}=\sqrt\frac{4}{10}\thickapprox 0,4472 \\
+P(E|A)=P(0,9\leq X_{A}\leq 1,1)=P\left(\dfrac{0,9-1}{0,4472}\leq Z\leq\dfrac{1,1-1}{0,4472}\right) \\
+P(−0,2236\leq Z\leq 0,2236)=2\Phi(0,2236)-1=2\cdot0.5871-1 \\
+P(E|A)=0,1742 \\
+P(A)=0,40 \\
+\mu_{B}=1,1 \\
+\sigma_{B}\thickapprox 0,4472 \\
+P(E|B)= P(0,9\leq X_{B}\leq 1,1)=P\left(\frac{0,9-11}{0,4472}\leq Z \leq \frac{1,1-1,1}{0,4472}\right)=P(-0,4472\leq Z\leq 0)\\
+P(-0,4472\leq Z\leq 0)=\Phi(0)-\Phi(-0,4472)=\Phi(0)+\Phi(0,4472)-1=0,5 + 0,6700-1\\
+P(E|B)=0,17 \\
+P(B)=0,60 \\
+P(A\cap B)=0\\
+P(E)=P(E|A)P(A)+P(E|B)P(B) \\
+P(E)=0,1742\cdot 0,40+0,17\cdot 0,6 \\
+P(E)=0,17168
+\end{array}
+$$
+* **b -** Se ha logrado estabilizar la máquina $B$ para producir tornillos con diámetro medio de 1 cm. Su desvío estándar $\sigma$ todavía debe ser regulado. ¿Que valor debería tomar $\sigma$ para cumplir los requerimientos de calidad con probabilidad mayor o igual que 0,90?
