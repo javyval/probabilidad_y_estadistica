@@ -388,3 +388,183 @@ P(E)=0,17168
 \end{array}
 $$
 * **b -** Se ha logrado estabilizar la máquina $B$ para producir tornillos con diámetro medio de 1 cm. Su desvío estándar $\sigma$ todavía debe ser regulado. ¿Que valor debería tomar $\sigma$ para cumplir los requerimientos de calidad con probabilidad mayor o igual que 0,90?
+$$
+\begin{array}{l}
+P(0,9\leq X\leq 1,1)=P\left(\dfrac{0,9-1}{\sigma}\leq Z\leq \dfrac{1,1-1}{\sigma}\right)=P\left(-\dfrac{0,1}{\sigma}\leq Z\leq \dfrac{0,1}{\sigma}\right)=2\Phi\left(\dfrac{0,1}{\sigma}\right)-1 \\
+P(0,9\leq X\leq 1,1)=0,9\iff \Phi\left(\dfrac{0,1}{\sigma}\right)=0,95 \\
+z_{0,95}=1,645\Longrightarrow 1,645=\dfrac{0,1}{\sigma} \\
+\sigma \thickapprox0,0608
+\end{array}
+$$
+### Ejercicio 10
+La dureza de Rockwell de un metal se determina al golpear con un punto acerado la superficie del metal y después medir la profundidad de penetración del punto. Suponga que la dureza Rockwell de cierta aleación está normalmente distribuida con media de 70 y desviación estándar de 3.
+* **a -** Un espécimen es aceptable si su dureza está entre 67 y 75 ¿Cual es la probabilidad de que un espécimen seleccionado al azar tenga una dureza aceptable?
+$$
+\begin{array}{l}
+P(67\leq X\leq 75)=P\left(\frac{67-70}{3}\leq Z\leq\frac{75-70}{3}\right)=P\left(-1\leq Z\leq\frac{5}{3}\right) \\
+P\left(-1\leq Z\leq\dfrac{5}{3}\right)\thickapprox\Phi(1,67)+\Phi(1)-1=0,9525+0,8413-1\\
+P(67\leq X\leq 75)=0,7938
+\end{array}
+$$
+* **b -** Si la escala aceptable de dureza es de $(70-c; 70+c)$, ¿Para que valor de $c$ tendría una dureza aceptable el $95\%$ de todos los especímenes?
+$$
+\begin{array}{l}
+P(70-c\leq X\leq 70+c)=0,9 \\
+P(70-c\leq X\leq 70+c)=P\left(\dfrac{70-70-c}{3}\leq Z\leq \dfrac{70-70+c}{3} \right) \\
+P\left(-\dfrac{c}{3}\leq Z\leq\dfrac{c}{3}\right)=2\Phi\left(\dfrac{c}{3}\right)-1 \\
+2\Phi\left(\dfrac{c}{3}\right)-1=0,95\iff \Phi\left(\dfrac{c}{3}\right)=0,975 \\
+z_{0,95}=1,96\Longrightarrow c=1,96\cdot 3 \\
+c=5,88
+\end{array}
+$$
+* **c -** Si la escala aceptable es como en el inciso **a** y la dureza de diez especímenes seleccionados al azar se determina independientemente, cual es el número esperado de especímenes aceptables entre los 10 ?
+$$
+\begin{array}{l}
+Y\thicksim\mathcal B(10,0.7938) \\
+E(Y)=n\cdot p=10\cdot 0,7938 \\
+E(Y)=7,938
+\end{array}
+$$
+* **d -** ¿Cuál es la probabilidad de que a lo sumo ocho de diez especímenes seleccionados independientemente tengan una dureza menor de 73,84?
+$$
+\begin{array}{l}
+P(X<73,84)=P\left(Z<\dfrac{73,84-70}{3}\right)=P(Z<1,28)=8997\thickapprox 0,9 \\
+W\thicksim\mathcal B(10,0.9) \\
+P(W=w)=\dbinom{10}{w}p^{w}(1-p)^{10-w}\quad w=0,1,2,\dots,10 \\
+P(W\leq 8)=1-P(W\geq 9)=1-P(W=9)-P(W=10)=1-0,3874-0,3487 \\
+P(W\leq 8)=0,2639
+\end{array}
+$$
+## Distribución Exponencial
+### Ejercicio 11
+Sea $X$: distancia en metros que un animal recorre desde hogar de nacimiento hasta el primer territorio vacante que encuentra. El articulo "Competition and Dispersal from Multiple Nests", Ecology 1997, afirma que para los canguros, $X$ tiene una distribución exponencial con parámetro $\lambda=0,01386$.
+$$
+\begin{array}{l}
+\lambda=0,01386 \\
+f(x)=\begin{cases}
+0,01386\cdot e^{-\lambda\cdot x} & x\geq 0 \\
+0 & x<0
+\end{cases} \\
+F(x)=\begin{cases}
+1-e^{-\lambda\cdot x} & x\geq 0 \\
+0 & x<0
+\end{cases}
+\end{array}
+$$
+* **a -** ¿Cuál es la probabilidad de que la distancia sea a lo sumo $100 m$?¿A lo sumo $200m$?¿Esté entre $100m\ y\ 200m$?
+$$
+\begin{array}{l}
+P(X\leq 100)=F(100)=1-e^{-0,01386\cdot 100}=1-e^{-1,386} \\
+P(X\leq 100)\thickapprox0,7499 \\
+P(X\leq 200)=F(200)=1-e^{-0,01386\cdot 200}=1-e^{-2,772} \\
+P(X\leq 200)\thickapprox0,9375 \\
+P(100\leq X\leq 200)=F(200)-F(100)=1-e^{-0,01386\cdot 200}-(1-e^{-0,01386\cdot 100})=-e^{-2,772}+e^{-1,386} \\
+P(100\leq X\leq 200)\thickapprox 0,1875
+\end{array}
+$$
+* **b -** ¿Cuál es la probabilidad de que la distancia sea mayor que la distancia promedio en mas de dos desviaciones estándar?
+$$
+\begin{array}{l}
+\mu=\dfrac{1}{\lambda}\iff \mu \cdot \lambda=1\\
+\sigma=\mu \\
+P(2\sigma+\mu< X)=1-P(X\leq 3\mu)=1-(1-e^{-\lambda3\mu})=e^{-3\mu \lambda} \\
+P(2\mu< X)=e^{-3} \\
+P(2\mu< X)=0,0498
+\end{array}
+$$
+* **c -** ¿Cuál es el valor de la mediana de la distancia?
+$$
+\begin{array}{l}
+F(\overline{x})=0,5 \\
+1-e^{-\lambda\overline{x}}=0,5 \\
+e^{-\lambda\overline{x}}=0,5\iff -\lambda\overline{x}=\ln(0,5)\iff\overline{x}=-\dfrac{\ln(0,5)}{\lambda} \\
+\overline{x}=53,899469717
+\end{array}
+$$
+### Ejercicio 12
+Un sistema consta de cinco componentes idénticos conectados en serie como se muestra la siguiente figura:
+![[practico_3_ej12|600]]
+Tan pronto como falla un componente, falla todo el sistema. Se supone que cada componente tiene una duración que esta distribuida exponencialmente con $\lambda=0,01$ y que los componentes fallan independientemente unos de otros. Se definen eventos $A_{i}=\{\text{el i-ésimo componenete que dura por lo menos }t\text{ horas}\quad i=1,\dots,5$. por lo que los $A_{i}$ son eventos independientes. Sea $X$ el tiempo en el que falla el sistema, es decir, la duración más breve entre los cinco componentes.
+* **a -** El evento $\{X\leq t\}$, ¿A qué evento donde aparece $A_{1},\dots,A_{5}$ es equivalente?
+$$
+\begin{array}{l}
+\displaystyle\{X\leq t\}=\bigcup_{i=1}^{5}\overline{A_{i}}
+\end{array}
+$$
+* **b -** Usando la independencia de los $A_{i}$, calcule $P(X\geq t)$. Obtenga $F(t)=P(X\leq t)$ y la función de densidad de $X$. ¿Qué tipo de distribución tiene $X$?
+$$
+\begin{array}{l}
+T_{i}\thicksim Exponencial(\lambda) \\
+P(A_{i})= P(T_{i}\geq t)=1-P(T_{i}\leq t)=1-F(t)=1-1+e^{-\lambda t}=e^{ \lambda t}\\
+\displaystyle P(X\geq t)=P\left(\bigcap_{i=1}^{5}A_{i}\right)=\prod_{i=1}^{5}P(A_{i})=\prod_{i=1}^{5}e^{-\lambda t}=e^{-5\lambda t} \\
+P(X\leq t)=1-P(X\geq t)=1-e^{-5\lambda t}\\
+F(x)=\begin{cases}
+ 1-e^{-5\lambda x} & si & x\geq 0 \\
+ 0 & si & x<0
+\end{cases} \\
+f(t)=\frac{d}{dt}(1-e^{-5\lambda t}) \\
+f(t)=5\lambda e^{-5\lambda t} \\
+f(t)=\begin{cases}
+5\lambda e^{-5\lambda t}  & x>0 \\
+0 & x<0
+\end{cases} \\
+\text{Luego, }X\thicksim Exponencial(5\lambda) 
+\end{array}
+
+$$
+* **c -** Suponga que hay $n$ componentes . cada uno con duración exponencial con parámetro $\lambda$. ¿Qué tipo de distribución tiene $X$?
+$$
+\begin{array}{l}
+\text{analogo al ejercicio anterior con n = 5} \\
+X \thicksim Exponencial(n\lambda)
+\end{array}
+$$
+## Otras Distribuciones
+### Ejercicio 13
+Los ingenieros que diseñan la próxima generación de transbordadores espaciales planean incluir dos bombas de combustible: una activa y la otra de reserva. Si la bomba principal falla, la segunda se activa automáticamente. Supongamos que se espera que una misión típica requiera bombear combustible durante un máximo  de 50 horas. Según las especificaciones del fabricante, se espera que las bombas fallen una vez cada 100 horas.¿Cuál es la probabilidad de que un sistema de bomba de combustible de este tipo no funcione durante las 50 horas completas?
+$$
+\begin{array}{l}
+\lambda=0,01 \\
+\alpha=2 \\
+X\thicksim \Gamma(2,0.01) \\
+f_{X}(x, \alpha, \lambda)=\dfrac{\lambda^{2}xe^{-\lambda x}}{\Gamma(2)}=\lambda^{2} xe^{-\lambda x}\quad 0\leq x \\
+\displaystyle F(x)=\int_{0}^{x}\lambda^{2} te^{-\lambda t}dt=\lambda^{2}\left (\int_{0}^{x}t\cdot e^{-\lambda t}dt\right)=\lambda^{2}\left[-\frac{x\cdot e^{-\lambda x}}{\lambda}-\frac{e^{-\lambda x}}{\lambda^{2}}\right]_{0}^{x}=-\lambda xe^{-\lambda x}-e^{-\lambda x}+1\\
+du=dt\quad v=-\dfrac{e^{-\lambda t}}{\lambda}- \\
+u=t\quad dv=e^{-\lambda t}dt \\
+\begin{align}
+\displaystyle \int t\cdot e^{-\lambda t}dt &=-\frac{t\cdot e^{-\lambda t}}{\lambda}-\int- \frac{e^{-\lambda t}}{\lambda}dt=-\frac{t\cdot e^{-\lambda t}}{\lambda}+\frac{1}{\lambda}\int e^{-\lambda t}dt=-\frac{t\cdot e^{-\lambda t}}{\lambda}+\frac{1}{\lambda} \frac{e^{-\lambda t}}{-\lambda} \\
+\displaystyle &=-\frac{t\cdot e^{-\lambda t}}{\lambda}-\frac{e^{-\lambda t}}{\lambda^{2}}
+\end{align} \\
+F(x)=\begin{cases}
+ 1-e^{-\lambda x}(1+\lambda x) & si & 0\leq x \\
+ 0 & si  & 0>x 
+\end{cases} \\
+P(X\leq 50)=F(50)=1-e^{-0,5}(1+0,5) \\
+P(X\leq 50)=0,0902
+\end{array}
+$$
+### Ejercicio 14
+El tiempo semanal $Y$ (en horas) durante el cual cierta máquina industrial no funciona, tiene aproximadamente una distribución Gamma con $\alpha=1000$ y $\beta=20$. La pérdida, en pesos, para la operación industrial debido a esta baja, está dada por $L=30Y+2Y^{2}$. Calcule el valor esperado y la varianza de $L$.
+$$
+\begin{array}{l}
+E(Y)= \alpha \beta=20000 \\
+V(Y)=\alpha \beta=1000\cdot20^{2}=400000 \\
+V(Y)=E(Y^{2})-\mu^{2}\Longrightarrow E(Y^{2})=V(X)+\mu^{2}=400000+ 400000000=400400000 \\
+E(L)=30E(Y)+2E(Y^{2}) \\
+E(L)=30\cdot 20000+2\cdot 400400000 \\
+E(L)=801400000 \\
+\begin{align}
+\displaystyle E(X^{n})&=\int_{0}^{\infty}x^{n}f(x,\alpha,\beta)dx=\int_{0}^{n}x^{n} \frac{ x^{\alpha-1}e^{-x/\beta}}{\beta^{\alpha}\Gamma(\alpha)}dx\\&=\frac{1}{\beta^{\alpha}\Gamma(\alpha)}\int_{0}^{n}x^{(\alpha+n)-1}e^{-x/\beta}dx=\frac{1}{\beta^{\alpha}\Gamma(\alpha)}\beta^{\alpha+n}\Gamma(\alpha+n) \\
+&=\beta^{n}\frac{\Gamma(\alpha+n)}{\Gamma(\alpha)} 
+\end{align} \\
+V(L)=E(L^{2})-E(L)^{2}=E((30Y+2Y^{2})^{2})-E(L)^{2}\\
+V(L)=E(30^{2}Y^{2}+120Y^{3}+4Y^{4}) -E(L)^{2}=30^{2}E(Y^{2})+120E(Y^{3})+4(Y^{4})-E(L)^{2} \\
+E(Y^{2})=20 \dfrac{\Gamma(\alpha+2)}{\Gamma(\alpha)}=20 (\alpha +2)(\alpha+1)\alpha\dfrac{\Gamma(\alpha)}{\Gamma(\alpha)}=20(\alpha+2)(\alpha+1)\alpha \\
+E(Y^{2})=20^{2}(\alpha+2)(\alpha+1)\alpha \\
+E(Y^{3})=20^{3}(\alpha+3)(\alpha+2)(\alpha+1)\alpha \\
+E(Y^{4})=20^{4}(\alpha+4)(\alpha+3)(\alpha+2)(\alpha+1)\alpha \\
+V(L)=30^{2}E(Y^{2})+120 \\
+E(Y^{3})+4(Y^{4})-E(L)^{2} \\
+\end{array}
+$$
+### Ejercicio 15
