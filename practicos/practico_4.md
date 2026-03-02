@@ -195,5 +195,210 @@ $$
 ### Ejercicio 4
 Un profesor entrega un artículo largo a una mecanografía y otro más corto a otra. Sea $X$ el número de errores de mecanografía del primer articulo e $Y$ el número de errores de mecanografía del segundo artículo. Suponga que $X$ e $Y$ son variables aleatorias con distribución Poisson de parámetros $\lambda_{1}$ y $\lambda_{2}$ respectivamente.
 * **a -** Dar la probabilidad de masa conjunta de $(X,Y)$.
+$$
+\begin{align}  
+&p(x,y)=P(X=x\cap Y=y)=P(X=x)\cdot P(Y=y)=\frac{\lambda_{1}^{x}e^{-\lambda_{1}}}{x!} \cdot \frac{\lambda_{2}^{y}e^{-\lambda_{2}}}{y!} \\
+&p(x,y)=\frac{\lambda_{1}^{x}\lambda_{2}^{y}e^{-(\lambda_{1}+\lambda_{2})}}{x!y!}
+\end{align}
+$$
 * **b -** ¿Cuál es la probabilidad de que a lo sumo se cometa un error entre los dos artículos?
+$$
+\begin{aligned}
+&\text{usando el punto c}\\
+&P(X+Y\leq 1)=P(X+Y=0)+P(X+Y=1)=\frac{e^{-(\lambda_{1}+\lambda_{2})}(\lambda_{1}+\lambda_{2})^{0}}{0!}+\frac{e^{-(\lambda_{1}+\lambda_{2})}(\lambda_{1}+\lambda_{2})^{1}}{1!}\\
+&P(X+Y\leq 1)=e^{-(\lambda_{1}+\lambda_{2})}(1+\lambda_{1}+\lambda_{2})
+\end{aligned}
+$$
 * **c -** Obtener una expresión general para la probabilidad de que el número total de errores entre ambos artículos sea $m$ cualquier número entero no negativo
+$$
+\begin{aligned}
+P(X+Y=m)&=\sum_{k=0}^{m}P(X=k\cap Y=m-k)=\sum_{k=0}^{m} \left(\frac{\lambda_{1}^{k}e^{-\lambda_{1}}}{k!}\right)\cdot\left( \frac{\lambda_{2}^{m-k}e^{-\lambda_{2}}}{(m-k)!}\right)\\
+&=\frac{e^{-(\lambda_{1}+\lambda_{2})}}{m!}\sum_{k=0}^{m} \frac{m!}{k!(m-k)!}\lambda_{1}^{k}\lambda_{2}^{m-k}=\frac{e^{-(\lambda_{1}+\lambda_{2})}}{m!}\sum_{k=0}^{m}\binom{m}{k}\lambda_{1}^{k}\lambda_{2}^{m-k}\\
+&=\frac{e^{-(\lambda_{1}+\lambda_{2})}(\lambda_{1}+\lambda_{2})^{m}}{m!}\\
+&\boxed{X+Y\thicksim Poisson(\lambda_{1}+\lambda_{2})}
+\end{aligned}
+$$
+### Ejercicio 5
+Una persona tiene dos bombillas para una lámpara en particular. Sea $X$ e $Y$ el tiempo de duración, en miles de horas, para la primera y segunda bombilla respectivamente. Suponga que $X$ e $Y$ son variables aleatorias independientes e idénticamente distribuidas, con distribución exponencial de parámetro $\lambda=1$.
+* **a -** Dar la función de densidad de probabilidad conjunta de $(X,Y)$.
+$$
+\begin{align}
+p(x,y)&=P(X=x\cap Y=y)=f_{X}(x)\cdot f_{Y}(y)=\lambda e^{-\lambda x}\cdot \lambda e^{-\lambda y} \\
+&=e^{-(x+y)} \\
+\end{align}
+$$
+* **b -** ¿Cuál es la probabilidad de que ambas bombillas duren a lo sumo mil horas?
+$$
+\begin{align}
+P(X\leq 1\cap Y\leq 1)&=\int_{0}^{1} \int_{0}^{1}p(x,y)dy\ dx=\int_{0}^{1}\int_{0}^{1}e^{-(x+y)}dy\ dx  \\
+&=\int_{0}^{1}e^{-x}\int_{0}^{1}e^{-y}\ dy\ dx=\int_{0}^{1}e^{-x}[-e^{-y}]_{0}^{1}\ dx=\int_{0}^{1}e^{-x}(-e^{-1}-(-1))\ dx \\
+&=(1-e^{-1})\int_{0}^{1}e^{-x}dx=(1-e^{-1})[-e^{-x}]_{0}^{1}=(1-e^{-1})^{2}=1-\frac{2}{e}+\frac{1}{e^{2}} \\
+&=0,3996
+\end{align}
+$$
+* **c -** ¿Cuál es la probabilidad de que la duración total entre las bombillas sea a lo sumo 2000 horas?
+$$
+\begin{align}
+P(X+Y\leq 2)&=\int_{0}^{2}\int_{0}^{2-x}e^{-x}e^{-y}dy\ dx=\int_{0}^{2}e^{-x}[-e^{-y}]_{0}^{2-x}dx=\int_{0}^{2}e^{-x}(-e^{x-2}+1)dx \\
+&=\int_{0}^{2}(e^{-x}-e^{-2})\ dx=[-e^{-x}-xe^{-2}]_{0}^{2}=-e^{-2}-2e^{-2}+1=-3e^{-2}+1 \\
+&=1-\frac{3}{e^{2}}\thickapprox 0,5939
+\end{align}
+$$
+## Ejercicios MathLovers
+### Ejercicio 6
+Si $X$ e $Y$ son variables aleatorias independientes con $X_{i}\thicksim\mathcal B(n_{i},p)$ Para $i=1,2$, probar que $X_{1}+X_{2}\thicksim\mathcal B(n_{1}+n_{2},p)$. Ayuda: Puede utilizar la identidad de Vandermonde.
+$$
+\begin{align}
+\binom{m+n}{r}=\sum_{k=0}^{r}\binom{m}{k}\binom{n}{r-k}
+\end{align}
+$$
+$$
+\begin{align}
+X_{1}=X\quad X_{2}&=Y\\
+P(X+Y=z)&=\sum_{k=0}^{z}P(X=k)\cdot P(Y=z-k)= \sum_{k=0}^{z}\binom{m}{k}p^{k}(p-1)^{m-k}\binom{n}{z-k}p^{z-k}(1-p)^{n-z+k} \\
+&=p^{z}(p-1)^{n+m-z}\sum_{k=0}^{z}\binom{m}{k}\binom{n}{z-k} \\
+&=p^{z}(p-1)^{n+m-z}\binom{m+n}{z} \quad\therefore QED
+\end{align}
+$$
+### Ejercicio 7
+* **a -** Demuestre que si $X$ e $Y$ son variables aleatorias independientes, entonces $E(XY)=E(X)E(Y)$. (Considere los casos en que las variables aleatorias son ambas discretas o ambas continuas).
+$$
+\begin{array}{l}
+\text{Variables Aleatorias Discretas} \\
+\begin{aligned}
+E(X)E(Y)&=\sum_{i}x_{i}P(X=x_{i})\cdot \sum_{j}y_{j}P(Y=y_{j}) \\
+&=\sum_{i}\sum_{j}x_{i}y_{j}P(X=x_{i},Y=y_{j}) \\
+&=E(XY)\quad\therefore QED 
+\end{aligned} \\
+\text{Variables aleatorias Continuas} \\
+\begin{aligned}
+E(X)E(Y)&=\int_{-\infty}^{\infty}x\cdot f_{X}(x)\ dx\int_{-\infty}^{\infty}y\cdot f_{Y}(y)\ dy \\
+&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}xy\cdot f_{X,Y}(x,y)\ dy\ dx \\
+&=E(XY)
+\end{aligned}
+\end{array}
+$$
+* **b -** Un topógrafo desea marcar en el terreno un cuadrado de longitud $L$. Sin embargo, debido a un error de medición, traza un rectángulo donde los lados norte-sur tiene una longitud $X$ y los lados este-oeste tienen longitud $Y$. Suponga que $X$ e $Y$ son independientes y que cada una tiene una distribución uniforme en el intervalo $[L-a,L+a]$(donde $0<a<L$). ¿Cuál es el área esperada del rectángulo resultante?  
+$$
+\begin{array}{l}
+E(X)=\dfrac{L-a+L+a}{2}=L\\
+E(Y)=\dfrac{L-a+L+a}{2}=L \\
+E(XY)=E(X)E(Y)=L^{2} \\
+\boxed{E(XY)=L^{2}}
+\end{array}
+$$
+### Ejercicio 8
+Suponga que la función de probabilidad de masa conjunta de $(X,Y)$ está dada por la siguiente tabla:
+$$
+\begin{array}{|c|ccc|}
+\hline X/Y & -1 & 0 & 1 \\
+\hline -1 & a & b & a \\
+0 & b & 0 & b \\
+1 & a & b & a \\
+\hline
+\end{array}
+$$
+donde se cumple que $a+b=1/4$
+* **a -** Demostrar que $E(XY)=E(X)E(Y)$ y luego $\rho=0$.
+$$
+\begin{align}
+E(X)&=(a+b+a)(-1)+(b+0+b)(0)+(a+b+a)(1)=(a+b+a)(1-1) \\
+&=0 \\ \\
+E(Y)&=(a+b+a)(-1)+(b+0+b)(0)+(a+b+a)(1)=(a+b+a)(1-1) \\
+&=0 \\ \\
+E(X)\cdot E(Y)&=0 \\ \\
+E(XY)&=(-1)(-1)a+00b+(-1)1a+0(-1)b+0(-1)b+000+0(1)b+(-1)1a+1(0)b+(1)(1)a \\
+&=a+0-a+0+0+0-a+0+a \\
+&=0 \\ \\
+&\boxed{E(XY)=E(X)\cdot E(Y)} \\  \\
+Cov(X,Y)&=E(XY)-E(X)E(Y) \\
+\rho&=\frac{Cov(X,Y)}{\sigma_{X}\sigma_{Y}} \\
+&\boxed{\rho=0}
+\end{align}
+$$
+* **b -** ¿Son las variables $X$ e $Y$ independientes?
+$$
+\begin{array}{l}
+P(X=0,Y=0)=0 \\
+P(X=0)=2b \\
+P(Y=0)=2b \\
+P(X=0)\cdot P(Y=0)=2b\cdot2b=4b^{2} \\
+\text{si son independientes }4b^{2}=0\Longrightarrow b=0\Longrightarrow a=\dfrac{1}{4} \\
+\text{caso contrario si } a\neq \frac{1}{4} \text{ No son independientes} \\
+\text{Notar que si }b=0\Longrightarrow \text{hay puntos donde la probabilidad vale 0, por lo que la tabla se modificaria}
+\end{array}
+$$
+### Ejercicio 9
+Suponga que $Y_{1}$ e $Y_{2}$ son variables aleatorias tales que:
+$$
+\begin{array}{lllll}
+E(Y_{1})=2\quad & E(Y_{2})=-1\quad & \rho(Y_{1},Y_{2})=\dfrac{1}{2\sqrt{6}}\quad & Var(Y_{1})=4\quad & Var(Y_{2})=6
+\end{array}
+$$
+Obtener:
+* **a -** $E(3Y_{1}-2Y_{2})$
+$$
+\begin{array}{l}
+E(3Y_{1}-2Y_{2})=3E(Y_{1})-2E(Y_{2})=3\cdot 2-2\cdot (-1) \\
+\boxed{E(3Y_{1}-2Y_{2})=8}
+\end{array}
+$$
+* **b -** $Var(3Y_{1}-2Y_{2})$
+$$
+\begin{array}{l}
+\rho(Y_{1},Y_{2})=\dfrac{Cov(Y_{1},Y_{2})}{\sigma_{Y_{1}}\sigma_{Y_{2}}}\iff Cov(Y_{1},Y_{2})=\rho(Y_{1},Y_{2})\sigma_{Y_{1}}\sigma_{Y_{2}} \\
+Cov(Y_{1},Y_{2})=\dfrac{\sqrt{4}\sqrt{6}}{2\sqrt{ 6 }}=1 \\
+Var(3Y_{1}-2Y_{2})=3^{2}Var(Y_{1})+(-2)^{2}Var(Y_{2})+2(3)(-2)Cov(Y_{1},Y_{2})=9\cdot 4+4\cdot 6 - 12\cdot 1 \\
+\boxed{Var(3Y_{1}-2Y_{2})=48}
+\end{array}
+$$
+* **c -** $Cov(3Y_{1}-2Y_{2},Y_{1})$
+$$
+\begin{array}{l}
+Cov(3Y_{1}-2Y_{2},Y_{1})=Cov(3Y_{1},Y_{1})-Cov(2Y_{2},Y_{1})=3Cov(Y_{1},Y_{1})-2Cov(Y_{2},Y_{1})=3Var(Y_{1})-2 \\
+\boxed {Cov(3Y_{1}-2Y_{2},Y_{1})=10}
+\end{array}
+$$
+* **d -** $Cov(2Y_{1}+4Y_{2},5Y_{1}-Y_{2})$
+$$
+\begin{array}{l}
+\begin{align}
+Cov(2Y_{1}+4Y_{2},5Y_{1}-Y_{2})&=Cov(2Y_{1},5Y_{1}-Y_{2})+Cov(4Y_{2},5Y_{1}-Y_{2}) \\
+&=Cov(2Y_{1},5Y_{1})+Cov(2Y_{1},-Y_{2})+Cov(4Y_{2},5Y_{1})+Cov(4Y_{2},-Y_{2}) \\
+&=10Cov(Y_{1},Y_{1})-2Cov(Y_{1},Y_{2})+20Cov(Y_{2},Y_{1})-4(Y_{2},Y_{2}) \\
+&=10Var(Y_{1})+18Cov(Y_{1},Y_{2})-4Var(Y_{2}) \\
+&=10\cdot 4+18\cdot 1-4\cdot 6 \\
+&=34
+\end{align}
+\end{array}
+$$
+* **e -** $E(3Y_{2}^{2})$
+$$
+\begin{array}{l}
+Var(Y_{2})=E(Y_{2}^{2})-E(Y_{2})^{2}\iff E(Y^{2}_{2})=Var(Y_{2})+E(Y_{2})^{2}=6+(-1)^{2} \\
+E(Y^{2}_{2})=7 \\
+E(3Y^{2}_{2})=3E(Y^{2}_{2})=3\cdot 7 \\
+E(EY_{2}^{2})=21
+\end{array}
+$$
+* **f -** $E(3Y_{1}Y_{2})$
+$$
+\begin{array}{l}
+Cov(Y_{1},Y_{2})=E(Y_{1}Y_{2})-E(Y_{1})E(Y_{2})\iff \\ E(Y_{1}Y_{2})=Cov(Y_{1},Y_{2})+E(Y_{1})E(Y_{2})=1+2(-1) \\
+E(Y_{1}Y_{2})=-1 \\
+E(3Y_{1}Y_{2})=3E(Y_{1}Y_{2})=3\cdot (-1) \\
+\boxed{E(3Y_{1}Y_{2})=-3}
+\end{array}
+$$
+* **g -** $Cov(2Y_{1}+4,-2Y_{2}-6)$
+$$
+\begin{array}{l}
+Cov(2Y_{1}+4,-2Y_{2}-6)=2(-2)Cov(Y_{1},Y_{2})=-4\cdot 1 \\
+\boxed{Cov(2Y_{1}+4,-2Y_{2}-6)=-4}
+\end{array}
+$$
+## Importancia de ala Normal Estándar
+### Ejercicio 10
+Suponga que la densidad de sedimento $(g/cm)$ de un espécimen, seleccionado al azar de cierta región, está normalmente distribuida con una media de $2,65$ y una desviación estándar de $0,85$.
+* **a -** Si se selecciona al azar una muestra aleatoria de 25 especímenes. ¿Cuál es la probabilidad de que el promedio muestral de la densidad del sedimento sea lo sumo 3? ¿Y que se encuentre entre 2,65 y 3?
+* **b -** ¿Qué tan grande se requeriría el tamaño muestral para asegurar que la primera probabilidad calculada en $(a)$ sea por lo menos $0.99$?
